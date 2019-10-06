@@ -4,6 +4,8 @@ ARG PHP_VERSION=7.1
 ARG PHP_SWOOLE=4.4.7
 ARG PHP_XDEBUG=false
 ARG PHP_REDIS=4.2.0
+ARG PHP_MEMCACHED=3.1.3
+ARG PHP_PDO_SQLSRV=5.6.1
 
 FROM php:${PHP_VERSION}-fpm-alpine
 
@@ -45,6 +47,22 @@ RUN if [ ${PHP_REDIS} != false ]; then \
     curl -O http://pecl.php.net/get/redis-${PHP_REDIS}.tgz -L \
     && pecl install redis-${PHP_REDIS}.tgz \
     && docker-php-ext-enable redis \
+;fi
+
+# MEMCACHED
+ARG PHP_MEMCACHED=false
+RUN if [ ${PHP_MEMCACHED} != false ]; then \
+    curl -O http://pecl.php.net/get/memcached-${PHP_MEMCACHED}.tgz -L \
+    && pecl install memcached-${PHP_MEMCACHED}.tgz \
+    && docker-php-ext-enable memcached \
+;fi
+
+#PHP_PDO_SQLSRV
+ARG PHP_PDO_SQLSRV=false
+RUN if [ ${PHP_PDO_SQLSRV} != false ]; then \
+    curl -O http://pecl.php.net/get/pdo_sqlsrv-${PHP_PDO_SQLSRV}.tgz -L \
+    && pecl install pdo_sqlsrv-${PHP_PDO_SQLSRV}.tgz \
+    && docker-php-ext-enable pdo_sqlsrv \
 ;fi
 
 WORKDIR /var/www/html
