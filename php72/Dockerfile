@@ -1,3 +1,5 @@
+LABEL maintainer="Xiaodi <liangjinbiao@live.com>"
+
 ARG PHP_VERSION=7.2
 ARG PHP_SWOOLE=4.4.7
 ARG PHP_XDEBUG=false
