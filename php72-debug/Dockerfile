@@ -1,14 +1,15 @@
 ARG PHP_VERSION=7.2
 ARG PHP_SWOOLE=4.4.7
 ARG PHP_XDEBUG=2.6.1
+ARG PHP_REDIS=4.2.0
 
 FROM php:${PHP_VERSION}-fpm-alpine
 
 #阿里云源
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-RUN apk add --no-cache autoconf g++ libtool make curl-dev libxml2-dev linux-headers zip
+RUN apk add --no-cache autoconf g++ libtool make curl-dev libxml2-dev linux-headers libzip-dev
 
-RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl
+RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl zip
 
 #Composer
 RUN curl -sS https://getcomposer.org/installer | php \
