@@ -9,4 +9,3 @@ PHP: 7.1 ~ 7.3
 support `bcmath pcntl pdo_mysql mysqli curl zip`, `composer`  
 
 workspace `/var/www/html`
-
