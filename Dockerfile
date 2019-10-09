@@ -50,7 +50,8 @@ RUN if [ ${PHP_SQLSRV} != false ]; then \
 # MEMCACHED
 ARG PHP_MEMCACHED=false
 RUN if [ ${PHP_MEMCACHED} != false ]; then \
-    pecl install memcached \
+    apk add --no-cache libmemcached-dev zlib-dev \
+    && pecl install memcached \
     && docker-php-ext-enable memcached \
 ;fi
 
