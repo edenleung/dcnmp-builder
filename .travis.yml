@@ -12,4 +12,4 @@ script:
   
 after_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push xiaodi93/dcnmp-73
+  - docker push xiaodi93/dcnmp-php73
