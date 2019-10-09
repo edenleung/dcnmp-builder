@@ -29,25 +29,29 @@ RUN if [ ${PHP_SWOOLE} != false ]; then \
 #XDEBUG
 ARG PHP_XDEBUG=false
 RUN if [ ${PHP_XDEBUG} != false ]; then \
-    curl -O http://pecl.php.net/get/xdebug-${PHP_XDEBUG}.tgz -L \
-    && pecl install xdebug-${PHP_XDEBUG}.tgz \
+    pecl install xdebug \
     && docker-php-ext-enable xdebug \
 ;fi
 
 #REDIS
 ARG PHP_REDIS=false
 RUN if [ ${PHP_REDIS} != false ]; then \
-    curl -O http://pecl.php.net/get/redis-${PHP_REDIS}.tgz -L \
-    && pecl install redis-${PHP_REDIS}.tgz \
+    pecl install redis \
     && docker-php-ext-enable redis \
 ;fi
 
 #PDO_SQLSRV
 ARG PHP_SQLSRV=false
 RUN if [ ${PHP_SQLSRV} != false ]; then \
-    curl -O http://pecl.php.net/get/pdo_sqlsrv-${PHP_SQLSRV}.tgz -L \
-    && pecl install pdo_sqlsrv-${PHP_SQLSRV}.tgz \
+    pecl install pdo_sqlsrv
     && docker-php-ext-enable pdo_sqlsrv \
+;fi
+
+# MEMCACHED
+ARG PHP_MEMCACHED=false
+RUN if [ ${PHP_MEMCACHED} != false ]; then \
+    pecl install memcached
+    && docker-php-ext-enable memcached \
 ;fi
 
 WORKDIR /var/www/html
