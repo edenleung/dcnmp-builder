@@ -4,12 +4,12 @@ services:
   - docker
 
 before_install:
-  - docker build -t xiaodi93/dcnmp-73:latest ./php73
-  - docker build -t xiaodi93/dcnmp-73:debug ./php73-debug
-  - docker build -t xiaodi93/dcnmp-72:latest ./php72
-  - docker build -t xiaodi93/dcnmp-72:debug ./php72-debug
-  - docker build -t xiaodi93/dcnmp-71:latest ./php71
-  - docker build -t xiaodi93/dcnmp-71:debug ./php71-debug
+  - docker build -t xiaodi93/dcnmp-php73:latest ./php73
+  - docker build -t xiaodi93/dcnmp-php73:debug ./php73-debug
+  - docker build -t xiaodi93/dcnmp-php72:latest ./php72
+  - docker build -t xiaodi93/dcnmp-php72:debug ./php72-debug
+  - docker build -t xiaodi93/dcnmp-php71:latest ./php71
+  - docker build -t xiaodi93/dcnmp-php71:debug ./php71-debug
   
 script:
   - docker images
