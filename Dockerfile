@@ -43,14 +43,14 @@ RUN if [ ${PHP_REDIS} != false ]; then \
 #PDO_SQLSRV
 ARG PHP_SQLSRV=false
 RUN if [ ${PHP_SQLSRV} != false ]; then \
-    pecl install pdo_sqlsrv
+    pecl install pdo_sqlsrv \
     && docker-php-ext-enable pdo_sqlsrv \
 ;fi
 
 # MEMCACHED
 ARG PHP_MEMCACHED=false
 RUN if [ ${PHP_MEMCACHED} != false ]; then \
-    pecl install memcached
+    pecl install memcached \
     && docker-php-ext-enable memcached \
 ;fi
 
