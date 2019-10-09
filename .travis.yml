@@ -5,7 +5,11 @@ services:
 
 before_install:
   - docker build -t xiaodi93/dcnmp-73:latest ./php73
-  - docker build -t xiaodi93/dcnmp-73:debug ./php73
+  - docker build -t xiaodi93/dcnmp-73:debug ./php73-debug
+  - docker build -t xiaodi93/dcnmp-72:latest ./php72
+  - docker build -t xiaodi93/dcnmp-72:debug ./php72-debug
+  - docker build -t xiaodi93/dcnmp-71:latest ./php71
+  - docker build -t xiaodi93/dcnmp-71:debug ./php71-debug
   
 script:
   - docker images
@@ -13,3 +17,5 @@ script:
 after_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push xiaodi93/dcnmp-php73
+  - docker push xiaodi93/dcnmp-php72
+  - docker push xiaodi93/dcnmp-php71
