@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t xiaodi93/dcnmp-php73:latest --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
-  - docker build -t xiaodi93/dcnmp-php73:debug --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
-  - docker build -t xiaodi93/dcnmp-php72:latest --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
-  - docker build -t xiaodi93/dcnmp-php72:debug --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
+  # - docker build -t xiaodi93/dcnmp-php73:latest --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
+  # - docker build -t xiaodi93/dcnmp-php73:debug --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
+  # - docker build -t xiaodi93/dcnmp-php72:latest --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
+  # - docker build -t xiaodi93/dcnmp-php72:debug --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
   - docker build -t xiaodi93/dcnmp-php71:latest --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
   - docker build -t xiaodi93/dcnmp-php71:debug --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
 
@@ -16,6 +16,6 @@ script:
   
 after_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push xiaodi93/dcnmp-php73
-  - docker push xiaodi93/dcnmp-php72
+  # - docker push xiaodi93/dcnmp-php73
+  # - docker push xiaodi93/dcnmp-php72
   - docker push xiaodi93/dcnmp-php71
