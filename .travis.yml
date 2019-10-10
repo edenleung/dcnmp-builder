@@ -2,8 +2,20 @@ language: ruby
 
 services:
   - docker
+  
 
+cache:
+  bundler: true
+  directories:
+    - $HOME/docker
+    
+before_cache:
+  - >
+    mkdir -p $HOME/docker && docker images -a --filter='dangling=false' --format '{{.Repository}}:{{.Tag}} {{.ID}}'
+    | xargs -n 2 -t sh -c 'test -e $HOME/docker/$1.tar.gz || docker save $0 | gzip -2 > $HOME/docker/$1.tar.gz'
+    
 before_install:
+  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
   - docker build -t xiaodi93/dcnmp-php73:latest --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
   - docker build -t xiaodi93/dcnmp-php73:debug --build-arg PHP_VERSION=7.3 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
   - docker build -t xiaodi93/dcnmp-php72:latest --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
