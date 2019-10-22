@@ -1,5 +1,5 @@
 # dcnmp-builder
-
+[![Build Status](https://travis-ci.org/xiaodit/dcnmp-builder.svg?branch=master)](https://travis-ci.org/xiaodit/dcnmp-builder)  
 PHP: 7.1 ~ 7.3 
 
 * REDIS: 4.2.0
