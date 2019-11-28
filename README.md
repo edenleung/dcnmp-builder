@@ -6,7 +6,7 @@ PHP: 7.1 ~ 7.3
 * SWOOLE: 4.4.7
 * XDEBUG: 2.6.1
 
-support `bcmath pcntl pdo_mysql mysqli curl zip`, `composer`  
+support `pdo pdo_mysql mysqli pcntl exif bcmath calendar gmp sockets gettext shmop sysvmsg curl dba ldap mbstring gettext ftp bz2 opcache readline zend_test sysvsem sysvshm zip gd`, `composer`, `Xdebug`, `PgSql`, `Memcached`, `Redis`, `Swoole`
 
 workspace `/var/www/html`
 
