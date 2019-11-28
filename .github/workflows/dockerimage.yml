@@ -18,6 +18,10 @@ jobs:
         docker build -t xiaodi93/dcnmp-php72:debug  --build-arg PHP_VERSION=7.2 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
         docker build -t xiaodi93/dcnmp-php71:latest --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
         docker build -t xiaodi93/dcnmp-php71:debug  --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
-    - name: Log into registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}"
 
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Log into registry
+        run: echo 1234
