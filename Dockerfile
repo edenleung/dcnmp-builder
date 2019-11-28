@@ -12,7 +12,7 @@ RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
     && docker-php-ext-install gd
 
 #常用扩展
-RUN docker-php-ext-install pdo pdo_mysql mysqli pcntl exif bcmath calendar gmp sockets gettext shmop sysvmsg curl dba ldap mbstring gettext ftp bz2 opcache readline zend_test sysvsem sysvshm zip
+RUN docker-php-ext-install pdo pdo_mysql mysqli pcntl exif bcmath calendar gmp sockets gettext shmop sysvmsg curl dba ldap mbstring gettext ftp bz2 opcache readline sysvsem sysvshm zip
 
 #Composer
 RUN curl -O https://mirrors.aliyun.com/composer/composer.phar \
