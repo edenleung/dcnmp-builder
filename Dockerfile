@@ -3,20 +3,23 @@ FROM php:${PHP_VERSION}-fpm-alpine
 
 #阿里云源
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-RUN apk add --no-cache autoconf g++ libtool make curl-dev libxml2-dev linux-headers libzip-dev
 
-RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl zip
+RUN apk add --no-cache autoconf autoconf g++ libtool make curl-dev gettext-dev linux-headers gmp-dev openldap-dev bzip2 bzip2-dev libedit-dev libzip-dev
+
+#GD库
+RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-iconv-dir=/usr/include/ \
+    && docker-php-ext-install gd
+
+#常用扩展
+RUN docker-php-ext-install pdo pdo_mysql mysqli pcntl exif bcmath calendar gmp sockets gettext shmop sysvmsg curl dba ldap mbstring gettext ftp bz2 opcache readline zend_test sysvsem sysvshm zip
 
 #Composer
-RUN curl -sS https://getcomposer.org/installer | php \
+RUN curl -O https://mirrors.aliyun.com/composer/composer.phar \
+    && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer \
     && composer self-update --clean-backups \
     && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
-
-#GD
- RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install ${MC} gd
 
 #Swoole
 ARG PHP_SWOOLE=false
@@ -53,6 +56,13 @@ RUN if [ ${PHP_MEMCACHED} != false ]; then \
     apk add --no-cache libmemcached-dev zlib-dev \
     && pecl install memcached \
     && docker-php-ext-enable memcached \
+;fi
+
+#PgSql
+ARG PHP_PGSQL=false
+RUN if [ ${PHP_PGSQL} != false ]; then \
+    apk --no-cache add postgresql-dev \
+    && docker-php-ext-install pgsql \
 ;fi
 
 WORKDIR /var/www/html
