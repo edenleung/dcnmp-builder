@@ -19,9 +19,9 @@ jobs:
         docker build -t xiaodi93/dcnmp-php71:latest --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true .
         docker build -t xiaodi93/dcnmp-php71:debug  --build-arg PHP_VERSION=7.1 --build-arg PHP_SWOOLE=4.4.7 --build-arg PHP_REDIS=true --build-arg PHP_MEMCACHED=true --build-arg PHP_PDO_SQLSRV=true --build-arg PHP_XDEBUG=2.6.1 .
     - name: Log into registry
-        run:  echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
     - name: Push Image
-        run: |
-          docker push xiaodi93/dcnmp-php73
-          docker push xiaodi93/dcnmp-php72
-          docker push xiaodi93/dcnmp-php71
+      run: |
+        docker push xiaodi93/dcnmp-php73
+        docker push xiaodi93/dcnmp-php72
+        docker push xiaodi93/dcnmp-php71
