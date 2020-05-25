@@ -8,7 +8,7 @@ RUN apk add --no-cache autoconf autoconf g++ libtool make curl-dev gettext-dev l
 
 #GD库
 RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-iconv-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
 
 #常用扩展
