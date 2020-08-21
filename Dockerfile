@@ -1,8 +1,8 @@
 ARG PHP_VERSION
 FROM php:${PHP_VERSION}-fpm-alpine
 
-#阿里云源
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+# 阿里云源
+# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk add --no-cache autoconf autoconf g++ libtool make curl-dev gettext-dev linux-headers gmp-dev openldap-dev bzip2 bzip2-dev libedit-dev libzip-dev
 
