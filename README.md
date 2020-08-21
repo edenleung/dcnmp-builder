@@ -1,5 +1,5 @@
 # dcnmp-builder
-[![Build Status](https://travis-ci.org/xiaodit/dcnmp-builder.svg?branch=master)](https://travis-ci.org/xiaodit/dcnmp-builder)
+![Docker Image CI](https://github.com/edenleung/dcnmp-builder/workflows/Docker%20Image%20CI/badge.svg)
 
 PHP: 7.1 ~ 7.3 
 
