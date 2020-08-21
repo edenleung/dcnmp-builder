@@ -4,7 +4,7 @@
 PHP: 7.1 ~ 7.3 
 
 * REDIS: 4.2.0
-* SWOOLE: 4.4.7
+* SWOOLE: 4.5.2
 * XDEBUG: 2.6.1
 
 Support `pdo pdo_mysql mysqli pcntl exif bcmath calendar gmp sockets gettext shmop sysvmsg curl dba ldap mbstring gettext ftp bz2 opcache readline sysvsem sysvshm zip gd`, `composer`, `Xdebug`, `PgSql`, `Memcached`, `Redis`, `Swoole`
