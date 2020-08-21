@@ -43,26 +43,12 @@ RUN if [ ${PHP_REDIS} != false ]; then \
     && docker-php-ext-enable redis \
 ;fi
 
-#PDO_SQLSRV
-ARG PHP_SQLSRV=false
-RUN if [ ${PHP_SQLSRV} != false ]; then \
-    pecl install pdo_sqlsrv \
-    && docker-php-ext-enable pdo_sqlsrv \
-;fi
-
 # MEMCACHED
 ARG PHP_MEMCACHED=false
 RUN if [ ${PHP_MEMCACHED} != false ]; then \
     apk add --no-cache libmemcached-dev zlib-dev \
     && pecl install memcached \
     && docker-php-ext-enable memcached \
-;fi
-
-#PgSql
-ARG PHP_PGSQL=false
-RUN if [ ${PHP_PGSQL} != false ]; then \
-    apk --no-cache add postgresql-dev \
-    && docker-php-ext-install pgsql \
 ;fi
 
 WORKDIR /var/www/html
